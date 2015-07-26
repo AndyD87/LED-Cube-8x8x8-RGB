@@ -10,6 +10,9 @@
 #include "config.h"
 #include "cube/cube_main.h"
 
+#include "xc.h"
+#define Leveldat  PORTBbits.RB7
+
 unsigned char level_counter=0; /**< Counter for Writinge out the LED-Level*/
 unsigned char timer_counter=0; /**< Counts timer-interupts of 1ms until delay reached */
 
@@ -38,6 +41,7 @@ void isr_3(void){
 		PIR1 &= 0xfe;
 		Cube_WriteLevel(level_counter);
     //setup next level
+    //Export it to cube-file
 		if(level_counter>14){
 			level_counter = 0;
 			Leveldat=0;

@@ -6,7 +6,7 @@
  * @brief   Cube output functions to LEDs
  */
 #include "cube_control.h"
-
+#include "xc.h"
 
 #define Clock     PORTBbits.RB4
 #define Switch    PORTBbits.RB5

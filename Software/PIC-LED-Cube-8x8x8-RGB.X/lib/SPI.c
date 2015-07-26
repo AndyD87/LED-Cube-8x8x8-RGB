@@ -7,6 +7,8 @@
  */
 #include "SPI.h"
 
+#include "xc.h"
+
 #define SPI_TR    SSPBUF
 #define SPI_RC    SSPBUF
 #define SPI_INT   PIR1bits.SSPIF

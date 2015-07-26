@@ -8,6 +8,8 @@
  */
 #include "SDCard.h"
 
+#include "xc.h"
+
 unsigned char block_p[4]={0,0,0,0};
 unsigned char read_active=0;
 unsigned char write_active=0;
