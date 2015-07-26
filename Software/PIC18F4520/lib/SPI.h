@@ -12,6 +12,13 @@
  * @brief init IOs, Ports and Modes 
  */ 
 extern void init_SPI();
-extern unsigned char SPI_send(unsigned char);
+
+/** 
+ * @brief write/read Byte to SPI
+ * 
+ * @param ucByte: Byte to write
+ * @return Byte read from bus
+ */  
+extern unsigned char SPI_send(unsigned char ucByte );
 
 #endif

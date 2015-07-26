@@ -6,6 +6,8 @@
  *  
  * @brief   main file, starting cube and handle interrupts
  */
+
+#include "config.h"
 #include "cube/cube_main.h"
 
 unsigned char level_counter=0; /**< Counter for Writinge out the LED-Level*/

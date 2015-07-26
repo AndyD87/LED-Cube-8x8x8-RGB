@@ -45,7 +45,7 @@ void init_SD(){
 	SSPCON1  = 0x20; 
 	return;
 }
-unsigned char SD_sendCommand(unsigned char cmd, unsigned char *para ){
+unsigned char SD_sendCommand( unsigned char cmd, unsigned char *para ){
 	unsigned char response = 0xff;
 	unsigned char i=0;
 	SD_sendByte(0xff);
@@ -67,14 +67,14 @@ unsigned char SD_sendCommand(unsigned char cmd, unsigned char *para ){
 	while(response > 0x4f) response = SD_sendByte(0xff);
 	return response;
 }
-unsigned char SD_sendByte(unsigned char toSend){
+unsigned char SD_sendByte( unsigned char toSend ){
 	SD_SS=0;
 	toSend = SPI_send(toSend);
 	SD_SS=1;
 	return toSend;
 }
 
-unsigned char SD_sendSingleCommand(unsigned char cmd){
+unsigned char SD_sendSingleCommand( unsigned char cmd ){
 	unsigned char para[4] = {0,0,0,0};
 	return SD_sendCommand(cmd, para);
 }

@@ -49,11 +49,42 @@
 #define CMD55       0x77
 #define CMD58       0x7a
 
+/**
+ * @brief Initialize SD-Card communication and recognize the SD type
+ */ 
 extern void init_SD();
-extern unsigned char SD_sendSingleCommand(unsigned char);
-extern unsigned char SD_sendCommand(unsigned char, unsigned char*);
-extern unsigned char SD_getByte();
-extern unsigned char SD_sendByte(unsigned char);
+
+/**
+ * @brief send a single Command to SD-Card
+ * 
+ * @param cmd: Command to send
+ * @return Last response received from SD-Card   
+ */ 
+extern unsigned char SD_sendSingleCommand( unsigned char cmd );
+
+/**
+ * @brief send a Command with data onto SD-Card
+ * 
+ * @param cmd: Command to send
+ * @param para: Data package with a size of 4 byte 
+ * @return Last response received from SD-Card
+ */ 
+extern unsigned char SD_sendCommand( unsigned char cmd, unsigned char *para );
+
+/**
+ * @brief Send a dummy byte to SD-Card to recieve data
+ * 
+ * @return recieved value
+ */    
+extern unsigned char SD_getByte( void );
+
+/**
+ * @brief Get next Byte and increase Addresspointer
+ * 
+ * @param toSend: Byte to send
+ * @return recieved Byte
+ */ 
+extern unsigned char SD_sendByte( unsigned char toSend );
 extern void SD_setNextBlock();
 extern void SD_goToStart();
 extern void SD_setAddress(unsigned char*);
