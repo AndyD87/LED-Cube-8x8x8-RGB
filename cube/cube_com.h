@@ -1,3 +1,10 @@
+/**
+ * @file    cube_com.h
+ * @author  Andreas Dirmeier
+ * @version 0.01
+ *  
+ * @brief   Cube communication handling
+ */
 #ifndef _cube_com_
 	#define _cube_com_
 

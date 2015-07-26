@@ -1,4 +1,11 @@
-#include "cube_orders.h"
+/**
+ * @file    cube_cmd.c
+ * @author  Andreas Dirmeier
+ * @version 0.01
+ *  
+ * @brief   Cube command handling
+ */
+#include "cube_cmd.h"
 #include "cube_functions.h"
 
 unsigned char args=0;
@@ -7,11 +14,11 @@ unsigned char argv[5]={0};
 unsigned char gl_order=0;
 unsigned char order_active=0;
 
-unsigned char cube_get_axis(unsigned char prev){
+unsigned char Cube_GetAxis(unsigned char prev){
 	return (prev>>4)+(prev&0x07)<<3;
 }
 
-unsigned char cube_parse_order(unsigned char recv){
+unsigned char Cube_ParseCmd(unsigned char recv){
 	if(order_active){
 		if(argp < args){
 			argv[argp] = recv;
@@ -100,23 +107,23 @@ unsigned char cube_activ_order(unsigned char recv){
 			return 0;
 		case 0x04:
 			switch(argv[0] & 0x30){
-				case 0x00: cube_set_x_line(cube_get_axis(argv[1]),0,recv); break;
-				case 0x10: cube_set_y_line(cube_get_axis(argv[1]),0,recv); break;
-				case 0x20: cube_set_z_line(cube_get_axis(argv[1]),0,recv); break;
+				case 0x00: cube_set_x_line(Cube_GetAxis(argv[1]),0,recv); break;
+				case 0x10: cube_set_y_line(Cube_GetAxis(argv[1]),0,recv); break;
+				case 0x20: cube_set_z_line(Cube_GetAxis(argv[1]),0,recv); break;
 			}
 			return 1;
 		case 0x05:
 			switch(argv[0] & 0x30){
-				case 0x00: cube_set_x_line(cube_get_axis(argv[1]),1,recv); break;
-				case 0x10: cube_set_y_line(cube_get_axis(argv[1]),1,recv); break;
-				case 0x20: cube_set_z_line(cube_get_axis(argv[1]),1,recv); break;
+				case 0x00: cube_set_x_line(Cube_GetAxis(argv[1]),1,recv); break;
+				case 0x10: cube_set_y_line(Cube_GetAxis(argv[1]),1,recv); break;
+				case 0x20: cube_set_z_line(Cube_GetAxis(argv[1]),1,recv); break;
 			}
 			return 1;
 		case 0x06:
 			switch(argv[0] & 0x30){
-				case 0x00: cube_set_x_line(cube_get_axis(argv[1]),2,recv); break;
-				case 0x10: cube_set_y_line(cube_get_axis(argv[1]),2,recv); break;
-				case 0x20: cube_set_z_line(cube_get_axis(argv[1]),2,recv); break;
+				case 0x00: cube_set_x_line(Cube_GetAxis(argv[1]),2,recv); break;
+				case 0x10: cube_set_y_line(Cube_GetAxis(argv[1]),2,recv); break;
+				case 0x20: cube_set_z_line(Cube_GetAxis(argv[1]),2,recv); break;
 			}
 			return 1;
 		case 0x07:
@@ -141,16 +148,16 @@ unsigned char cube_activ_order(unsigned char recv){
 			return 1;
 		case 0x20:
 			switch(argv[0] & 0x03){
-				case 0x00: cube_mv_x_line(cube_get_axis(argv[1]), cube_get_axis(argv[2])); break;
-				case 0x01: cube_mv_y_line(cube_get_axis(argv[1]), cube_get_axis(argv[2])); break;
-				case 0x02: cube_mv_z_line(cube_get_axis(argv[1]), cube_get_axis(argv[2])); break;
+				case 0x00: cube_mv_x_line(Cube_GetAxis(argv[1]), Cube_GetAxis(argv[2])); break;
+				case 0x01: cube_mv_y_line(Cube_GetAxis(argv[1]), Cube_GetAxis(argv[2])); break;
+				case 0x02: cube_mv_z_line(Cube_GetAxis(argv[1]), Cube_GetAxis(argv[2])); break;
 			}
 			return 1;
 		case 0x21:
 			switch(argv[0] & 0x03){
-				case 0x00: cube_cp_x_line(cube_get_axis(argv[1]), cube_get_axis(argv[2])); break;
-				case 0x01: cube_cp_y_line(cube_get_axis(argv[1]), cube_get_axis(argv[2])); break;
-				case 0x02: cube_cp_z_line(cube_get_axis(argv[1]), cube_get_axis(argv[2])); break;
+				case 0x00: cube_cp_x_line(Cube_GetAxis(argv[1]), Cube_GetAxis(argv[2])); break;
+				case 0x01: cube_cp_y_line(Cube_GetAxis(argv[1]), Cube_GetAxis(argv[2])); break;
+				case 0x02: cube_cp_z_line(Cube_GetAxis(argv[1]), Cube_GetAxis(argv[2])); break;
 			}
 			return 1;
 		default: return 1;

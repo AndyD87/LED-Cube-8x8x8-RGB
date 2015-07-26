@@ -1,23 +1,20 @@
-/******************************************************************************
-*
-*
-*	SD-Karten Funktionen
-*		Unterst�tzte Karten: MMC, SD, SDHC
-*
-******************************************************************************/
+/**
+ * @file    SDCard.h
+ * @author  Andreas Dirmeier
+ * @version 0.01
+ *  
+ * @brief   Read and Write functions on SD-Card over SPI
+ *          Actual it works just with MMC and SD 
+ */
 #ifndef _SDCARD_H_
 	#define _SDCARD_H_
-/******************************************************************************
-Definieren der SPI-Schnittstelle 3870
-******************************************************************************/
+
+//SPI
 #include "SPI.h"
 
 #define SD_SS     PORTCbits.RC2
 
-/******************************************************************************
-Definieren Befehlcodes der Karten      ACMD-Befehle werden mit startender 1 
-                                       markiert und in send_CMD() aufgeloest
-******************************************************************************/
+//SDCard Commands
 #define SD_GO_IDLE_STATE             0x40
 #define SD_SEND_OP_COND              0x41
 #define SD_APP_SEND_OP_COND          0xe9

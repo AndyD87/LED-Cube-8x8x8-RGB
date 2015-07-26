@@ -1,6 +1,13 @@
+/**
+ * @file    cube_com.c
+ * @author  Andreas Dirmeier
+ * @version 0.01
+ *  
+ * @brief   Cube communication handling
+ */
 #include "cube_com.h"
 
-#include "cube_orders.h"
+#include "cube_cmd.h"
 #include "cube_control.h"
 #include "cube_functions.h"
 
@@ -36,8 +43,8 @@ unsigned char cube_timer_interrupt(){
 			case 0x81: return 0;
 			case 0x82: SD_goToStart(); return 1;
 			default:
-				if(1==cube_parse_order(temp)){
-					while(!(temp = cube_parse_order(SD_getByte())));
+				if(1==Cube_ParseCmd(temp)){
+					while(!(temp = Cube_ParseCmd(SD_getByte())));
 					return 0;
 				}
 				else return 1;

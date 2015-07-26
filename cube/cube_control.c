@@ -1,6 +1,22 @@
+/**
+ * @file    cube_control.c
+ * @author  Andreas Dirmeier
+ * @version 0.01
+ *  
+ * @brief   Cube output functions to LEDs
+ */
 #include "cube_control.h"
 
-void set_stage (unsigned char stage){
+
+#define Clock     PORTBbits.RB4
+#define Switch    PORTBbits.RB5
+#define CLK       PORTBbits.RB6
+#define Leveldat  PORTBbits.RB7
+
+extern unsigned char led[3][64];
+extern unsigned char delay_ms;
+
+void Cube_WriteLevel (unsigned char stage){
 	unsigned char counter = 0;
 	unsigned char stage_temp, blueL, blueH, tmp_blue;
 	stage_temp = (stage)*4;

@@ -1,3 +1,10 @@
+/**
+ * @file    cube_functions.h
+ * @author  Andreas Dirmeier
+ * @version 0.01
+ *  
+ * @brief   functions for API to manipulate LED Array
+ */
 #ifndef _cube_functions_
    #define _cube_functions_
 

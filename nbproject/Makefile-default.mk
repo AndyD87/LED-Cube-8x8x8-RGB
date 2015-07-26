@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=lib/SPI.c lib/SDCard.c cube/cube_com.c cube/cube_control.c cube/cube_functions.c cube/cube_orders.c main.c CONFIG.c
+SOURCEFILES_QUOTED_IF_SPACED=lib/SPI.c lib/SDCard.c cube/cube_com.c cube/cube_control.c cube/cube_functions.c cube/cube_cmd.c main.c CONFIG.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/lib/SPI.p1 ${OBJECTDIR}/lib/SDCard.p1 ${OBJECTDIR}/cube/cube_com.p1 ${OBJECTDIR}/cube/cube_control.p1 ${OBJECTDIR}/cube/cube_functions.p1 ${OBJECTDIR}/cube/cube_orders.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/CONFIG.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/lib/SPI.p1.d ${OBJECTDIR}/lib/SDCard.p1.d ${OBJECTDIR}/cube/cube_com.p1.d ${OBJECTDIR}/cube/cube_control.p1.d ${OBJECTDIR}/cube/cube_functions.p1.d ${OBJECTDIR}/cube/cube_orders.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/CONFIG.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/lib/SPI.p1 ${OBJECTDIR}/lib/SDCard.p1 ${OBJECTDIR}/cube/cube_com.p1 ${OBJECTDIR}/cube/cube_control.p1 ${OBJECTDIR}/cube/cube_functions.p1 ${OBJECTDIR}/cube/cube_cmd.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/CONFIG.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/lib/SPI.p1.d ${OBJECTDIR}/lib/SDCard.p1.d ${OBJECTDIR}/cube/cube_com.p1.d ${OBJECTDIR}/cube/cube_control.p1.d ${OBJECTDIR}/cube/cube_functions.p1.d ${OBJECTDIR}/cube/cube_cmd.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/CONFIG.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/lib/SPI.p1 ${OBJECTDIR}/lib/SDCard.p1 ${OBJECTDIR}/cube/cube_com.p1 ${OBJECTDIR}/cube/cube_control.p1 ${OBJECTDIR}/cube/cube_functions.p1 ${OBJECTDIR}/cube/cube_orders.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/CONFIG.p1
+OBJECTFILES=${OBJECTDIR}/lib/SPI.p1 ${OBJECTDIR}/lib/SDCard.p1 ${OBJECTDIR}/cube/cube_com.p1 ${OBJECTDIR}/cube/cube_control.p1 ${OBJECTDIR}/cube/cube_functions.p1 ${OBJECTDIR}/cube/cube_cmd.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/CONFIG.p1
 
 # Source Files
-SOURCEFILES=lib/SPI.c lib/SDCard.c cube/cube_com.c cube/cube_control.c cube/cube_functions.c cube/cube_orders.c main.c CONFIG.c
+SOURCEFILES=lib/SPI.c lib/SDCard.c cube/cube_com.c cube/cube_control.c cube/cube_functions.c cube/cube_cmd.c main.c CONFIG.c
 
 
 CFLAGS=
@@ -121,13 +121,13 @@ ${OBJECTDIR}/cube/cube_functions.p1: cube/cube_functions.c  nbproject/Makefile-$
 	@-${MV} ${OBJECTDIR}/cube/cube_functions.d ${OBJECTDIR}/cube/cube_functions.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/cube/cube_functions.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/cube/cube_orders.p1: cube/cube_orders.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/cube/cube_cmd.p1: cube/cube_cmd.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/cube" 
-	@${RM} ${OBJECTDIR}/cube/cube_orders.p1.d 
-	@${RM} ${OBJECTDIR}/cube/cube_orders.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=icd3  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 --warn=0 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/cube/cube_orders.p1  cube/cube_orders.c 
-	@-${MV} ${OBJECTDIR}/cube/cube_orders.d ${OBJECTDIR}/cube/cube_orders.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/cube/cube_orders.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	@${RM} ${OBJECTDIR}/cube/cube_cmd.p1.d 
+	@${RM} ${OBJECTDIR}/cube/cube_cmd.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=icd3  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 --warn=0 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/cube/cube_cmd.p1  cube/cube_cmd.c 
+	@-${MV} ${OBJECTDIR}/cube/cube_cmd.d ${OBJECTDIR}/cube/cube_cmd.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/cube/cube_cmd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 ${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -186,13 +186,13 @@ ${OBJECTDIR}/cube/cube_functions.p1: cube/cube_functions.c  nbproject/Makefile-$
 	@-${MV} ${OBJECTDIR}/cube/cube_functions.d ${OBJECTDIR}/cube/cube_functions.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/cube/cube_functions.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/cube/cube_orders.p1: cube/cube_orders.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/cube/cube_cmd.p1: cube/cube_cmd.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/cube" 
-	@${RM} ${OBJECTDIR}/cube/cube_orders.p1.d 
-	@${RM} ${OBJECTDIR}/cube/cube_orders.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 --warn=0 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/cube/cube_orders.p1  cube/cube_orders.c 
-	@-${MV} ${OBJECTDIR}/cube/cube_orders.d ${OBJECTDIR}/cube/cube_orders.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/cube/cube_orders.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	@${RM} ${OBJECTDIR}/cube/cube_cmd.p1.d 
+	@${RM} ${OBJECTDIR}/cube/cube_cmd.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 --warn=0 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/cube/cube_cmd.p1  cube/cube_cmd.c 
+	@-${MV} ${OBJECTDIR}/cube/cube_cmd.d ${OBJECTDIR}/cube/cube_cmd.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/cube/cube_cmd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 ${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 

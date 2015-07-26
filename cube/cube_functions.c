@@ -1,3 +1,10 @@
+/**
+ * @file    cube_functions.c
+ * @author  Andreas Dirmeier
+ * @version 0.01
+ *  
+ * @brief   functions for API to manipulate LED Array
+ */
 #include "cube_functions.h"
 
 unsigned char c, tmp_led[64];

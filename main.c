@@ -1,19 +1,29 @@
-#include "CONFIG.h"
-
+/**
+ * @mainpage LED-Cube Project
+ * @file    main.c
+ * @author  Andreas Dirmeier
+ * @version 0.01
+ *  
+ * @brief   main file, starting cube and handle interrupts
+ */
 #include "cube/cube_main.h"
 
-unsigned char stage_counter=0;
-unsigned char timer_counter=0;
-unsigned char interrupted=0;
-extern unsigned char delay_ms; 
+unsigned char level_counter=0; /**< Counter for Writinge out the LED-Level*/
+unsigned char timer_counter=0; /**< Counts timer-interupts of 1ms until delay reached */
 
+extern unsigned char delay_ms; /**< delay in ms until event gets called */
+
+/**
+ * @brief Main interrupt-routine
+ */ 
 void isr_3(void){
 	//Timer 1ms
 	if(PIR2 & 0x02){
 		TMR3H = 0xcf;
 		if(timer_counter >= delay_ms){
 			timer_counter = 0;
-			if(!cube_timer_interrupt()) T3CONbits.TMR3ON = 0;
+			if(!cube_timer_interrupt()) 
+        T3CONbits.TMR3ON = 0;
 		}
 		else {
 			timer_counter ++;
@@ -24,13 +34,14 @@ void isr_3(void){
 		INTCONbits.GIE=0;
 		TMR1H=0xf0;
 		PIR1 &= 0xfe;
-		set_stage(stage_counter);
-		if(stage_counter>14){
-			stage_counter = 0;
+		Cube_WriteLevel(level_counter);
+    //setup next level
+		if(level_counter>14){
+			level_counter = 0;
 			Leveldat=0;
 		}
 		else {
-			stage_counter++;;
+			level_counter++;;
 			Leveldat=1;
 		}
 		INTCONbits.GIE=1;
@@ -38,63 +49,30 @@ void isr_3(void){
 	if(PIR1 & 0x20){
 		PIE1 &= 0xdf;
 		PIR1 &= 0xdf;
-		TXREG = cube_parse_order(RCREG);
+		TXREG = Cube_ParseCmd(RCREG);
 		PIE1 |= 0x20;
 	}
 }
 
+/**
+ * @brief high priority interrupt, calles the main interrupt routine
+ */ 
 void interrupt high_priority isr1( void )
 {  isr_3();}
 
+/**
+ * @brief low priority interrupt, calles the main interrupt routine
+ */ 
 void interrupt low_priority isr2( void )
 {  isr_3();}
 
+/**
+ *
+ */
 void main ()
 {
-	PORTA = 0;
-	LATA = 0;
-	ADCON1 = 0x0f;
-	CMCON = 0x07;
-	TRISA = 0xff;
-
-	PORTB = 0;
-	LATB = 0;
-	TRISB = 0;
-
-	PORTC = 0;
-	LATC = 0;
-	TRISC = 0xd3;
-
-	PORTD = 0;
-	LATD = 0;
-	TRISD = 0;
-	
-	PORTE = 0;
-	LATE = 0;
-	TRISE = 0x00;
-
-	OSCCON = 0x8c;
-	RCON = 0x93;
-	INTCON = 0xc0;
-	INTCON2 = 0x00;
-	INTCON3 = 0x00;
-	PIE1 = 0x23;
-	PIE2 = 0x02;
-	IPR1 = 0x21;
-	IPR2 = 0x00;
-	
-	TXSTA = 0x24;
-	RCSTA = 0x90;
-	BAUDCON = 0x00;
-	SPBRG = 64;
-	
-	T3CON = 0xc1;
-	T1CON = 0x01;
-	
+  LoadConfig();
 	init_cube();
-  
-	while(1)
-	{
-		
-	}
+  //do nothing, cube is interrupt controled
+	while(1);
 }

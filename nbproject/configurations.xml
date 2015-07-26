@@ -9,7 +9,7 @@
       <itemPath>cube/cube_control.h</itemPath>
       <itemPath>cube/cube_functions.h</itemPath>
       <itemPath>cube/cube_main.h</itemPath>
-      <itemPath>cube/cube_orders.h</itemPath>
+      <itemPath>cube/cube_cmd.h</itemPath>
     </logicalFolder>
     <logicalFolder name="lib" displayName="lib" projectFiles="true">
       <itemPath>lib/SDCard.h</itemPath>
@@ -36,7 +36,7 @@
         <itemPath>cube/cube_com.c</itemPath>
         <itemPath>cube/cube_control.c</itemPath>
         <itemPath>cube/cube_functions.c</itemPath>
-        <itemPath>cube/cube_orders.c</itemPath>
+        <itemPath>cube/cube_cmd.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
       <itemPath>CONFIG.c</itemPath>

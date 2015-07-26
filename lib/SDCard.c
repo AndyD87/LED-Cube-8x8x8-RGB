@@ -1,5 +1,12 @@
+/**
+ * @file    SDCard.c
+ * @author  Andreas Dirmeier
+ * @version 0.01
+ *  
+ * @brief   Read and Write functions on SD-Card
+ *          Actual it works just with MMC and SD 
+ */
 #include "SDCard.h"
-
 
 unsigned char block_p[4]={0,0,0,0};
 unsigned char read_active=0;

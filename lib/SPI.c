@@ -1,10 +1,10 @@
-/******************************************************************************
-*
-*
-*	SPI Funktionen
-*	
-*
-******************************************************************************/
+/**
+ * @file    SPI.c
+ * @author  Andreas Dirmeier
+ * @version 0.01
+ *  
+ * @brief   SPI Functions
+ */
 #include "SPI.h"
 
 #define SPI_TR    SSPBUF
