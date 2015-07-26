@@ -1,5 +1,6 @@
 # LED-Cube-8x8x8-RGB
 LED-Cube Mikrocontroller Project
+[Video of build Cube](https://www.youtube.com/watch?v=Oi0ap_jhWTA)
 
 ## Notes
 - LED-Cube with 512 RGB-LEDs in 8x8x8
